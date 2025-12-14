@@ -18,7 +18,8 @@ interface pageProps {
 
 export function generateMetadata(): Metadata {
   return {
-    title: "Thông báo - SuicaoDex",
+    // CHANGED: Translated title and updated branding
+    title: "Notifications - Manga by PirateRuler.com",
   };
 }
 
@@ -27,12 +28,14 @@ export default async function Page({ searchParams }: pageProps) {
   const tabValues = [
     {
       value: "noti",
-      label: "Truyện",
+      // CHANGED: Translated "Truyện" to "Manga"
+      label: "Manga",
       icon: <NotepadText size={16} className="mr-1" />,
     },
     {
       value: "system",
-      label: "Hệ thống",
+      // CHANGED: Translated "Hệ thống" to "System"
+      label: "System",
       icon: <MonitorCog size={16} className="mr-1" />,
     },
   ];
@@ -40,7 +43,8 @@ export default async function Page({ searchParams }: pageProps) {
     <>
       <div>
         <hr className="w-9 h-1 bg-primary border-none" />
-        <h1 className="text-2xl font-black uppercase">Thông báo</h1>
+        {/* CHANGED: Translated Header */}
+        <h1 className="text-2xl font-black uppercase">Notifications</h1>
       </div>
 
       <Tabs defaultValue="noti" className="mt-4">
@@ -65,15 +69,15 @@ export default async function Page({ searchParams }: pageProps) {
             <AccordionItem value="item-1" className="border-none">
               <AccordionTrigger className="py-2">
                 <div className="flex items-center gap-1.5">
-                  <CircleHelp size={18} /> Có thể bạn cần biết:
+                  {/* CHANGED: Translated trigger text */}
+                  <CircleHelp size={18} /> Things to know:
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pb-2">
-                Thông báo truyện mới sẽ được lưu trên thiết bị của bạn; nếu bạn
-                xóa dữ liệu trình duyệt, thông báo cũng sẽ bị xóa theo.
+                {/* CHANGED: Translated notification warning */}
+                New manga notifications are saved on your device; if you clear your browser data, notifications will also be deleted.
                 <br />
-                Chính vì hạn chế trên, đôi khi sẽ không có thông báo dù truyện có chương mới
-                (sẽ khắc phục khi nhóm chức năng tài khoản được triển khai, chắc thế 🐧)
+                Due to this limitation, sometimes there may be no notification even if a manga has new chapters (this will be fixed when the account feature is implemented, hopefully 🐧).
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -81,7 +85,8 @@ export default async function Page({ searchParams }: pageProps) {
         </TabsContent>
         <TabsContent value="system">
           <Alert className="rounded-sm bg-secondary justify-center text-center">
-            Không có thông báo nào!
+            {/* CHANGED: Translated empty state */}
+            No notifications!
           </Alert>
         </TabsContent>
       </Tabs>
