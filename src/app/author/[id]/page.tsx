@@ -14,10 +14,12 @@ export async function generateMetadata({
   const { id } = await params;
   try {
     const author = await GetAuthor(id);
-    return { title: `${author.name} - SuicaoDex` };
+    // CHANGED: Updated branding
+    return { title: `${author.name} - Manga by PirateRuler.com` };
   } catch (error) {
     console.error("Error fetching author:", error);
-    return { title: "SuicaoDex" };
+    // CHANGED: Updated branding fallback
+    return { title: "Manga by PirateRuler.com" };
   }
 }
 
