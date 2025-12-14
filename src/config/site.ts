@@ -2,7 +2,8 @@ export const siteConfig = {
   name: "SuicaoDex",
   url: "https://suicaodex.com",
   ogImage: "https://suicaodex.com/og-image.png",
-  description: "SuicaoDex - Trang web truyện tranh đầu hàng VN",
+  // CHANGED: Translated to English
+  description: "SuicaoDex - The best manga reader on the web",
   links: {
     discord: "https://discord.gg/dongmoe",
     github: "https://github.com/TNTKien/better-suicaodex",
