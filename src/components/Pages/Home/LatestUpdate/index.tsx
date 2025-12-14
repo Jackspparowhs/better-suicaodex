@@ -23,7 +23,8 @@ export default function LatestUpdate() {
     return (
       <div className="flex flex-col">
         <hr className="w-9 h-1 bg-primary border-none" />
-        <h1 className="text-2xl font-black uppercase">Mới cập nhật</h1>
+        {/* CHANGED: Translated to English */}
+        <h1 className="text-2xl font-black uppercase">Latest Updates</h1>
 
         <div className="grid grid-cols-1 gap-3 mt-4 md:grid-cols-2 lg:grid-cols-3">
           {[...Array(9)].map((_, index) => (
@@ -41,7 +42,8 @@ export default function LatestUpdate() {
       <div className="flex justify-between">
         <div>
           <hr className="w-9 h-1 bg-primary border-none" />
-          <h1 className="text-2xl font-black uppercase">Mới cập nhật</h1>
+          {/* CHANGED: Translated to English */}
+          <h1 className="text-2xl font-black uppercase">Latest Updates</h1>
         </div>
 
         <Button asChild size="icon" variant="ghost" className="[&_svg]:size-6">
