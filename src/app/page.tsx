@@ -9,13 +9,13 @@ function breadcrumbJsonLd() {
       {
         "@type": "ListItem",
         position: 1,
-        name: "Trang chủ",
+        name: "Home", // Was: Trang chủ
         item: `${siteConfig.url}`,
       },
       {
         "@type": "ListItem",
         position: 2,
-        name: "Website đọc truyện chính thức",
+        name: "Official Manga Reader", // Was: Website đọc truyện chính thức
         item: `${siteConfig.url}/latest`,
       },
     ],
