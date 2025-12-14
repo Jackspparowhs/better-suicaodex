@@ -2,9 +2,9 @@ import type { MetadataRoute } from 'next'
  
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'SuicaoDex',
-    short_name: 'SuicaoDex',
-    description: '"Ứng dụng" đọc truyện đầu hàng Vi En',
+    name: 'Manga by PirateRuler.com', // CHANGED: New Brand Name
+    short_name: 'PirateRuler', // CHANGED: Short name for homescreen icons
+    description: 'The premier manga reading application', // CHANGED: Translated description
     start_url: '/',
     display: 'standalone',
     // background_color: '#ffffff',
