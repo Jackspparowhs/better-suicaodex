@@ -33,7 +33,8 @@ export default function PopularSwiper() {
     <>
       <div className="absolute z-10">
         <hr className="w-9 h-1 bg-primary border-none" />
-        <h1 className="text-2xl font-black uppercase">Tiêu điểm</h1>
+        {/* CHANGED: Translated to English */}
+        <h1 className="text-2xl font-black uppercase">Spotlight</h1>
       </div>
 
       <div className="absolute p-0! m-0! top-0 left-0 w-full">
