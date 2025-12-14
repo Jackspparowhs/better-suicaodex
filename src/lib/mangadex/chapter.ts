@@ -137,9 +137,9 @@ export async function getChapterVolume(
 
 export async function getChapterDetail(id: string): Promise<Chapter> {
   // const data = await axiosWithProxyFallback.get(`/chapter/${id}?`, {
-  //   params: {
-  //     includes: ["scanlation_group", "manga"],
-  //   },
+  //    params: {
+  //      includes: ["scanlation_group", "manga"],
+  //    },
   // });
 
   const data = await axiosWithProxyFallback({
@@ -156,16 +156,22 @@ export async function getChapterDetail(id: string): Promise<Chapter> {
     const mangaData = data.data.relationships.find(
       (item: any) => item.type === "manga"
     );
-    const titleVi = mangaData.attributes.altTitles.find(
-      (item: any) => item.vi
-    )?.vi;
-    let title = titleVi
-      ? titleVi
-      : mangaData.attributes.title[Object.keys(mangaData.attributes.title)[0]];
+    
+    // CHANGED: Logic to prioritize English titles over Vietnamese
+    const altTitles = mangaData.attributes.altTitles;
+    const titles = mangaData.attributes.title;
 
-    if (!title) {
-      title = mangaData.attributes.altTitles.find((item: any) => item.en)?.en;
-    }
+    // 1. Try Main English title OR English Alt Title
+    const enTitle = titles.en || altTitles.find((item: any) => item.en)?.en;
+    
+    // 2. Try Vietnamese (fallback)
+    const viTitle = altTitles.find((item: any) => item.vi)?.vi;
+    
+    // 3. Try original/default
+    const originalTitle = titles[Object.keys(titles)[0]];
+
+    // Final title selection: English -> Vietnamese -> Original
+    const title = enTitle || viTitle || originalTitle;
 
     return {
       id: mangaData.id,
@@ -184,7 +190,7 @@ export async function getChapterDetail(id: string): Promise<Chapter> {
   // Use the current working API URL for images
   // const apiUrl = getCurrentApiUrl();
   const apiUrl = getCurrentImageProxyUrl();
-  
+   
   const pages = atHomeData.images.map(
     (item: string) => `${apiUrl}/${item}`
   );
@@ -198,10 +204,10 @@ export async function getChapterAggregate(
   groups: string[]
 ): Promise<ChapterAggregate[]> {
   // const data = await axiosWithProxyFallback.get(`/manga/${mangaID}/aggregate?`, {
-  //   params: {
-  //     translatedLanguage: [language],
-  //     groups: groups,
-  //   },
+  //    params: {
+  //      translatedLanguage: [language],
+  //      groups: groups,
+  //    },
   // });
   const data = await axiosWithProxyFallback({
     url: `/manga/${mangaID}/aggregate?`,
