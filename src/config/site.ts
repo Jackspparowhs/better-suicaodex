@@ -1,13 +1,13 @@
 export const siteConfig = {
-  name: "SuicaoDex",
-  url: "https://suicaodex.com",
+  name: "Manga by PirateRuler",
+  url: "https://pirateruler.com",
   ogImage: "https://suicaodex.com/og-image.png",
   // CHANGED: Translated to English
-  description: "SuicaoDex - The best manga reader on the web",
+  description: "PirateRuler - The best manga reader on the web",
   links: {
-    discord: "https://discord.gg/dongmoe",
-    github: "https://github.com/TNTKien/better-suicaodex",
-    facebook: "https://facebook.com/suicaodex",
+    discord: "https://pirateruler.com",
+    github: "https://pirateruler.com",
+    facebook: "https://pirateruler.com",
   },
   mangadexAPI: {
     webURL: "https://mangadex.org",
@@ -19,7 +19,7 @@ export const siteConfig = {
     seasonalList: "68ab4f4e-6f01-4898-9038-c5eee066be27",
   },
   suicaodex: {
-    domain: "https://suicaodex.com",
+    domain: "https://pirateruler.com",
     dev_domain: "https://dev.suicaodex.com",
     apiURL: "https://api2.suicaodex.com", //pls use your own proxy server; or use built-in proxy, see /lib/axios.ts
   },
