@@ -6,9 +6,12 @@ import History from "@/components/Pages/History";
 
 export function generateMetadata(): Metadata {
   return {
-    title: "Lịch sử đọc truyện - SuicaoDex",
-    description: "Lịch sử đọc truyện",
-    keywords: ["Lịch sử", "History", "SuicaoDex"],
+    // CHANGED: Translated title and updated branding
+    title: "Reading History - Manga by PirateRuler.com",
+    // CHANGED: Translated description
+    description: "Reading History",
+    // CHANGED: Updated keywords
+    keywords: ["History", "Reading History", "Manga by PirateRuler.com"],
   };
 }
 export default function Page() {
@@ -16,15 +19,17 @@ export default function Page() {
     <>
       <div>
         <hr className="w-9 h-1 bg-primary border-none" />
-        <h1 className="text-2xl font-black uppercase">Lịch sử đọc</h1>
+        {/* CHANGED: Translated Header */}
+        <h1 className="text-2xl font-black uppercase">Reading History</h1>
       </div>
 
       <Alert className="mt-4 rounded-sm bg-secondary">
         <Terminal size={18} />
-        <AlertTitle>Có thể bạn cần biết:</AlertTitle>
+        {/* CHANGED: Translated Alert Title */}
+        <AlertTitle>Things to know:</AlertTitle>
+        {/* CHANGED: Translated Alert Description */}
         <AlertDescription>
-          Lịch sử đọc được lưu trên chính thiết bị của bạn, nên nếu bạn xóa dữ
-          liệu trình duyệt, lịch sử cũng sẽ bị xóa theo.
+          Reading history is saved locally on your device. If you clear your browser data, your history will also be deleted.
         </AlertDescription>
       </Alert>
 
