@@ -15,23 +15,29 @@ export async function generateMetadata({
   try {
     const group = await getGroup(id);
     return {
-      title: `${group.name} - SuicaoDex`,
+      // CHANGED: Updated branding
+      title: `${group.name} - Manga by PirateRuler.com`,
+      // CHANGED: Translated description and updated branding
       description: group.description
         ? group.description
-        : `Thông tin nhóm dịch ${group.name} - SuicaoDex`,
-      keywords: [`Manga`, `${group.name}`, "SuicaoDex"],
+        : `Scanlation group info ${group.name} - Manga by PirateRuler.com`,
+      // CHANGED: Updated keywords
+      keywords: [`Manga`, `${group.name}`, "Manga by PirateRuler.com"],
 
       openGraph: {
-        title: `${group.name} - SuicaoDex`,
-        siteName: "SuicaoDex",
+        // CHANGED: Updated branding
+        title: `${group.name} - Manga by PirateRuler.com`,
+        // CHANGED: Updated branding
+        siteName: "Manga by PirateRuler.com",
+        // CHANGED: Translated description and updated branding
         description: group.description
           ? group.description
-          : `Thông tin nhóm dịch ${group.name} - SuicaoDex`,
+          : `Scanlation group info ${group.name} - Manga by PirateRuler.com`,
         images: `${siteConfig.mangadexAPI.ogURL}/group/${group.id}`,
       },
     };
   } catch (error) {
-    return { title: "Lỗi mất rồi 😭" };
+    return { title: "Error 😭" }; // CHANGED: Translated error
   }
 }
 
