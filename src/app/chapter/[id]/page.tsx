@@ -18,32 +18,39 @@ export async function generateMetadata({
     const res = await getChapterDetail(id);
 
     const chapterInx = res.chapter ? `Ch. ${res.chapter}` : "Oneshot";
-    const title = [res.manga?.title, chapterInx, res.title, "SuicaoDex"]
+    // CHANGED: Updated branding in title
+    const title = [res.manga?.title, chapterInx, res.title, "Manga by PirateRuler.com"]
       .filter((x) => x)
       .join(" - ");
 
     return {
       title: title,
-      description: `Đọc ngay ${title}`,
+      // CHANGED: Translated description
+      description: `Read ${title}`,
       openGraph: {
         title: title,
-        siteName: "SuicaoDex",
-        description: `Đọc ngay ${title}`,
+        // CHANGED: Updated branding
+        siteName: "Manga by PirateRuler.com",
+        // CHANGED: Translated description
+        description: `Read ${title}`,
         images: `${siteConfig.mangadexAPI.ogURL}/chapter/${id}`,
       },
     };
   } catch (error: any) {
     if (error.status === 404) {
       return {
-        title: "Truyện không tồn tại",
+        // CHANGED: Translated error
+        title: "Chapter Not Found",
       };
     } else if (error.status === 503) {
       return {
-        title: "Đang bảo trì...",
+        // CHANGED: Translated error
+        title: "Under Maintenance...",
       };
     } else {
       return {
-        title: "Lỗi mất rồi :(",
+        // CHANGED: Translated error
+        title: "Error :(",
       };
     }
   }
