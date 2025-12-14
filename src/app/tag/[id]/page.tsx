@@ -26,14 +26,15 @@ export async function generateMetadata({
     return {
       title:
         page > 1
-          ? `Trang ${page} - ${tag.name} - SuicaoDex`
-          : `${tag.name} - SuicaoDex`,
-      description: `Truyện thuộc thể loại ${tag.name}`,
-      keywords: ["Thể loại", "Genre", tag.name, tag.group, "SuicaoDex"],
+          ? `Page ${page} - ${tag.name} - Manga by PirateRuler.com` // CHANGED: Updated branding
+          : `${tag.name} - Manga by PirateRuler.com`, // CHANGED: Updated branding
+      description: `Manga in genre ${tag.name}`, // CHANGED: Translated description
+      // CHANGED: Updated keywords
+      keywords: ["Tags", "Genre", tag.name, tag.group, "Manga by PirateRuler.com"],
     };
   } catch (error) {
     console.log(error);
-    return { title: "Lỗi mất rồi 😭" };
+    return { title: "Error 😭" }; // CHANGED: Translated error
   }
 }
 
@@ -49,6 +50,7 @@ export default async function Page({ params, searchParams }: PageProps) {
       <>
         <div>
           <hr className="w-9 h-1 bg-primary border-none" />
+          {/* The tag name usually comes from the API in English if configured correctly */}
           <h1 className="text-2xl font-black uppercase">{tag.name}</h1>
         </div>
 
@@ -61,7 +63,7 @@ export default async function Page({ params, searchParams }: PageProps) {
     );
   } catch (error) {
     console.log("Error fetching tag:", error);
-    return <div>Lỗi mất rồi 😭</div>;
+    return <div>Error 😭</div>; // CHANGED: Translated error
   }
 }
 
