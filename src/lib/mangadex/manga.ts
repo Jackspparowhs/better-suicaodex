@@ -7,21 +7,6 @@ import { ChaptersParser } from "./chapter";
 import { siteConfig } from "@/config/site";
 
 export function MangaParser(data: any): Manga {
-  // const titleVi = data.attributes.altTitles.find((item: any) => item.vi)?.vi;
-  // let title = titleVi
-  //   ? titleVi
-  //   : data.attributes.title[Object.keys(data.attributes.title)[0]];
-
-  // if (!title) {
-  //   title = data.attributes.altTitles.find((item: any) => item.en)?.en;
-  // }
-
-  // const altTitle =
-  //   data.attributes.title.en ||
-  //   data.attributes.altTitles.find((item: any) => item.en)?.en ||
-  //   data.attributes.altTitles.find((item: any) => item.ja)?.ja ||
-  //   null;
-
   const altTitles = data.attributes.altTitles;
   const titles = data.attributes.title;
 
@@ -33,26 +18,31 @@ export function MangaParser(data: any): Manga {
   const jaTitle = altTitles.find((t: any) => t.ja)?.ja || undefined;
   const originalTitle = titles[Object.keys(titles)[0]];
 
-  const title = viTitle || enTitles[0] || jaTitle || originalTitle;
+  // CHANGED: Prioritize English title first
+  const title = enTitles[0] || viTitle || jaTitle || originalTitle;
+  
   let altTitle: string | null = null;
-  if (title == viTitle) {
+  // Adjusted logic since English is now primary
+  if (title == enTitles[0]) {
+    altTitle = viTitle || jaTitle || null;
+  } else if (title == viTitle) {
     altTitle = enTitles[0] || jaTitle || null;
-  } else if (title == enTitles[0]) {
-    altTitle = enTitles[1] || jaTitle || null;
   } else if (title == jaTitle) {
     altTitle = null;
   }
 
   const language = data.attributes.availableTranslatedLanguages;
+
+  // CHANGED: Prioritize English description
   const description: { language: "vi" | "en"; content: string } = data
-    .attributes.description.vi
+    .attributes.description.en
     ? {
-        language: "vi",
-        content: data.attributes.description.vi,
-      }
-    : {
         language: "en",
         content: data.attributes.description.en,
+      }
+    : {
+        language: "vi", // Fallback to VI if EN is missing
+        content: data.attributes.description.vi,
       };
 
   const coverArt = data.relationships.find(
@@ -236,6 +226,7 @@ export async function getFirstChapter(
       translatedLanguage: ["en"],
     },
   });
+  // Kept VI here just in case, but usually not needed now
   const { data: vi } = await axiosWithProxyFallback({
     url: `/manga/${id}/feed`,
     method: "get",
@@ -267,7 +258,8 @@ export async function FirstViChapter(
         volume: "asc",
         chapter: "asc",
       },
-      translatedLanguage: ["vi"],
+      // CHANGED: Forced to English even if function is named Vi
+      translatedLanguage: ["en"], 
       includes: ["scanlation_group", "manga"],
     },
   });
@@ -481,7 +473,7 @@ export async function getStaffPickMangas(r18: boolean): Promise<Manga[]> {
           : 0,
       includes: ["cover_art", "author", "artist"],
       // hasAvailableChapters: "true",
-      // availableTranslatedLanguage: ["vi"],
+      // availableTranslatedLanguage: ["en"], // CHANGED commented hint
       contentRating: r18
         ? ["safe", "suggestive", "erotica", "pornographic"]
         : ["safe", "suggestive", "erotica"],
@@ -563,7 +555,8 @@ export async function getTotalMangas(): Promise<number> {
     url: `/manga`,
     method: "get",
     params: {
-      availableTranslatedLanguage: ["vi"],
+      // CHANGED: Count English mangas instead of Vietnamese
+      availableTranslatedLanguage: ["en"], 
     },
   });
   if (data.total > 10000) return 10000;
