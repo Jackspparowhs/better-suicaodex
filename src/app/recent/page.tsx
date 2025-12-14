@@ -14,10 +14,12 @@ export async function generateMetadata({
   return {
     title:
       page === 1
-        ? "Truyện mới - SuicaoDex"
-        : `Trang ${page} - Truyện mới - SuicaoDex`,
-    description: "Truyện mới, Manga mới nhất, Manga mới cập nhật",
-    keywords: ["Truyện mới", "Manga", "SuicaoDex"],
+        ? "New Manga - Manga by PirateRuler.com" // CHANGED: Updated branding
+        : `Page ${page} - New Manga - Manga by PirateRuler.com`, // CHANGED: Updated branding
+    // CHANGED: Translated description
+    description: "New manga, latest manga, updated manga",
+    // CHANGED: Updated keywords
+    keywords: ["New Manga", "Manga", "Manga by PirateRuler.com"],
   };
 }
 export default async function Page({ searchParams }: pageProps) {
@@ -27,7 +29,8 @@ export default async function Page({ searchParams }: pageProps) {
     <>
       <div>
         <hr className="w-9 h-1 bg-primary border-none" />
-        <h1 className="text-2xl font-black uppercase">Truyện mới</h1>
+        {/* CHANGED: Translated 'Truyện mới' to 'New Manga' */}
+        <h1 className="text-2xl font-black uppercase">New Manga</h1>
       </div>
 
       <Recent page={page} />
