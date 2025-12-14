@@ -22,9 +22,10 @@ import SyncLib from "@/components/Library/sync-lib";
 
 export function generateMetadata(): Metadata {
   return {
-    title: "Thư viện - SuicaoDex",
-    // description: "Thư viện",
-    // keywords: ["Lịch sử", "History", "SuicaoDex"],
+    // CHANGED: Translated title and updated branding
+    title: "Library - Manga by PirateRuler.com",
+    // description: "Library",
+    // keywords: ["Library", "History", "Manga by PirateRuler.com"],
   };
 }
 export default async function Page() {
@@ -40,18 +41,21 @@ export default async function Page() {
     <>
       <div>
         <hr className="w-9 h-1 bg-primary border-none" />
-        <h1 className="text-2xl font-black uppercase">Thư viện</h1>
+        {/* CHANGED: Translated Header */}
+        <h1 className="text-2xl font-black uppercase">Library</h1>
       </div>
 
       <Tabs defaultValue="local" className="mt-4">
         <TabsList className="w-full">
           <TabsTrigger className="w-full flex items-center" value="local">
             <CloudOff size={16} className="mr-1" />
-            Từ thiết bị
+            {/* CHANGED: Translated Tab Label */}
+            From Device
           </TabsTrigger>
           <TabsTrigger className="w-full flex items-center" value="cloud">
             <CircleUser size={16} className="mr-1" />
-            Từ tài khoản
+            {/* CHANGED: Translated Tab Label */}
+            From Account
           </TabsTrigger>
         </TabsList>
         <TabsContent value="local">
@@ -63,16 +67,15 @@ export default async function Page() {
             <AccordionItem value="item-1" className="border-none">
               <AccordionTrigger className="py-2">
                 <div className="flex items-center gap-1.5">
-                  <CircleHelp size={18} /> Có thể bạn cần biết:
+                  {/* CHANGED: Translated Trigger */}
+                  <CircleHelp size={18} /> Things to know:
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pb-2">
-                Đây là thư viện được lưu trên chính thiết bị của bạn, nó không
-                đồng bộ với thư viện lưu trên tài khoản. Nếu bạn xóa dữ liệu
-                trình duyệt, thư viện này cũng sẽ bị xóa theo.
+                {/* CHANGED: Translated Warning Content */}
+                This library is saved locally on your device and does not sync with your account. If you clear browser data, this library will be deleted.
                 <br />
-                Ngoài ra, mỗi danh mục chỉ lưu tối đa 500 truyện, khi lưu thêm
-                sẽ tự động xóa truyện cũ nhất.
+                Additionally, each category stores a maximum of 500 mangas; adding more will automatically delete the oldest ones.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -102,7 +105,8 @@ export default async function Page() {
             <SyncLib session={session} />
           ) : (
             <Alert className="rounded-sm bg-secondary justify-center text-center">
-              Bạn cần đăng nhập để dùng chức năng này!
+              {/* CHANGED: Translated Login Prompt */}
+              You need to log in to use this feature!
             </Alert>
           )}
         </TabsContent>
