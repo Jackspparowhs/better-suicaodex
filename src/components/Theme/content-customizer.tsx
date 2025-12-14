@@ -31,10 +31,11 @@ export function ContentCustomizer() {
     <div className="flex items-center gap-2">
       <Drawer>
         <DrawerTrigger asChild>
-          <SidebarMenuButton asChild tooltip="Nội dung" className="md:hidden">
+          {/* CHANGED: Translated tooltip and text */}
+          <SidebarMenuButton asChild tooltip="Content" className="md:hidden">
             <div>
               <SlidersHorizontal />
-              <span>Nội dung</span>
+              <span>Content</span>
             </div>
           </SidebarMenuButton>
         </DrawerTrigger>
@@ -47,14 +48,15 @@ export function ContentCustomizer() {
       <div className="hidden items-center md:flex grow">
         <Popover>
           <PopoverTrigger asChild>
+            {/* CHANGED: Translated tooltip and text */}
             <SidebarMenuButton
               asChild
-              tooltip="Nội dung"
+              tooltip="Content"
               className="cursor-pointer"
             >
               <div>
                 <SlidersHorizontal />
-                <span>Nội dung</span>
+                <span>Content</span>
               </div>
             </SidebarMenuButton>
           </PopoverTrigger>
@@ -86,10 +88,12 @@ function Customizer() {
       <div className="flex items-start pt-4 md:pt-0">
         <div className="space-y-1 pr-2">
           <div className="font-semibold leading-none tracking-tight">
-            Tuỳ chỉnh nội dung
+            {/* CHANGED: Translated header */}
+            Customize Content
           </div>
           <div className="text-xs text-muted-foreground">
-            Lọc truyện theo sở thích của bạn
+            {/* CHANGED: Translated description */}
+            Filter manga based on your preferences
           </div>
         </div>
         <Button
@@ -99,7 +103,8 @@ function Customizer() {
           onClick={() => {
             setConfig({
               ...config,
-              translatedLanguage: ["vi"],
+              // CHANGED: Reset defaults to English ["en"] instead of ["vi"]
+              translatedLanguage: ["en"],
               r18: false,
             });
           }}
@@ -110,7 +115,8 @@ function Customizer() {
       </div>
       <div className="flex flex-1 flex-col space-y-4 md:space-y-6">
         <div className="space-y-1.5">
-          <Label className="font-semibold">Ngôn ngữ bản dịch</Label>
+          {/* CHANGED: Translated label */}
+          <Label className="font-semibold">Translated Language</Label>
           <div className="grid grid-cols-3 gap-2">
             {mounted ? (
               <>
@@ -130,7 +136,8 @@ function Customizer() {
                   )}
                 >
                   <VN className="h-5 w-5" />
-                  T. Việt
+                  {/* CHANGED: Translated label */}
+                  Vietnamese
                 </Button>
 
                 <Button
@@ -149,7 +156,8 @@ function Customizer() {
                   )}
                 >
                   <GB className="h-5 w-5" />
-                  T. Anh
+                  {/* CHANGED: Translated label */}
+                  English
                 </Button>
 
                 <Button
@@ -168,7 +176,8 @@ function Customizer() {
                   )}
                 >
                   <Globe className="w-5 h-5" />
-                  Cả 2
+                  {/* CHANGED: Translated label */}
+                  Both
                 </Button>
               </>
             ) : (
@@ -181,7 +190,8 @@ function Customizer() {
         </div>
 
         <div className="space-y-1.5">
-          <Label className="font-semibold">R18 (Sếch)</Label>
+          {/* CHANGED: Translated label */}
+          <Label className="font-semibold">R18 (NSFW)</Label>
           <div className="grid grid-cols-3 gap-2">
             {mounted ? (
               <>
@@ -197,7 +207,8 @@ function Customizer() {
                   className={cn(config.r18 && "border-2 border-primary!")}
                 >
                   <Eye className="mr-1 -translate-x-1" />
-                  Hiện
+                  {/* CHANGED: Translated label */}
+                  Show
                 </Button>
                 <Button
                   variant={"outline"}
@@ -211,7 +222,8 @@ function Customizer() {
                   className={cn(!config.r18 && "border-2 border-primary!")}
                 >
                   <EyeOff className="mr-1 -translate-x-1" />
-                  Ẩn
+                  {/* CHANGED: Translated label */}
+                  Hide
                 </Button>
               </>
             ) : (
