@@ -1,7 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { formatDistanceToNowStrict } from "date-fns";
-import { vi as locale } from "date-fns/locale";
+import { enUS as locale } from "date-fns/locale"; // CHANGED: Switched to English locale
 import * as cheerio from "cheerio";
 import { defaultSchema } from "hast-util-sanitize";
 import { siteConfig } from "@/config/site";
@@ -15,7 +15,7 @@ export function getPlainTextLength(html: string): number {
   const temp = document.createElement("div");
   temp.innerHTML = html;
 
-  // Lấy text thuần và loại bỏ xuống dòng, tab
+  // Get plain text and remove newlines, tabs
   const rawText = temp.textContent || temp.innerText || "";
   const cleaned = rawText.replace(/[\n\t\r]/g, "");
 
@@ -26,7 +26,7 @@ export function getPlainTextFromHTML(html: string): string {
   if (!html) return "";
 
   const $ = cheerio.load(html);
-  const text = $.text(); // lấy toàn bộ text trong HTML
+  const text = $.text(); // get all text in HTML
   return text.replace(/\s+/g, " ").trim();
 }
 
@@ -43,23 +43,24 @@ export function getContentLength(html: string): number {
   return totalLength;
 }
 
+// CHANGED: Translated time units to English
 const formatDistanceLocale = {
-  lessThanXSeconds: "vừa xong",
-  xSeconds: "vừa xong",
-  halfAMinute: "vừa xong",
-  lessThanXMinutes: "{{count}} phút",
-  xMinutes: "{{count}} phút",
-  aboutXHours: "{{count}} giờ",
-  xHours: "{{count}} giờ",
-  xDays: "{{count}} ngày",
-  aboutXWeeks: "{{count}} tuần",
-  xWeeks: "{{count}} tuần",
-  aboutXMonths: "{{count}} tháng",
-  xMonths: "{{count}} tháng",
-  aboutXYears: "{{count}} năm",
-  xYears: "{{count}} năm",
-  overXYears: "{{count}} năm",
-  almostXYears: "{{count}} năm",
+  lessThanXSeconds: "just now",
+  xSeconds: "just now",
+  halfAMinute: "just now",
+  lessThanXMinutes: "{{count}} min",
+  xMinutes: "{{count}} min",
+  aboutXHours: "{{count}} hr",
+  xHours: "{{count}} hr",
+  xDays: "{{count}} day",
+  aboutXWeeks: "{{count}} wk",
+  xWeeks: "{{count}} wk",
+  aboutXMonths: "{{count}} mo",
+  xMonths: "{{count}} mo",
+  aboutXYears: "{{count}} yr",
+  xYears: "{{count}} yr",
+  overXYears: "{{count}} yr",
+  almostXYears: "{{count}} yr",
 };
 
 function formatDistance(token: string, count: number, options?: any): string {
@@ -71,11 +72,11 @@ function formatDistance(token: string, count: number, options?: any): string {
 
   if (options.addSuffix) {
     if (options.comparison > 0) {
-      return "Khoảng " + result;
+      return "in " + result;
     } else {
-      if (result === "vừa xong") return result;
+      if (result === "just now") return result;
 
-      return result + " trước";
+      return result + " ago"; // CHANGED: "trước" to "ago"
     }
   }
 
@@ -131,7 +132,7 @@ export const customSchema = {
     "div",
     "span",
     "p",
-    "u", // Cho phép thẻ <u>
+    "u", // Allow <u> tag
   ],
 };
 
@@ -159,7 +160,7 @@ export function getCoverImageUrl(
   fileName: string,
   size: string = ""
 ): string {
-  // Dùng image proxy URL thay vì API URL
+  // Use image proxy URL instead of API URL
   const apiUrl = getCurrentImageProxyUrl();
 
   if (size === "full") {
@@ -213,7 +214,7 @@ export function generateSlug(title: string): string {
   if (!title) return "";
   return slugify(title, {
     lower: true,
-    locale: "vi",
+    locale: "en", // CHANGED: 'vi' to 'en'
     remove: /[*+~.,()'"!?:@\[\]]/g,
   });
 }
