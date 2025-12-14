@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "better-suicaodex",
+      "name": "Manga by PirateRuler.com",
       "dependencies": {
         "@auth/prisma-adapter": "^2.8.0",
         "@bprogress/next": "^3.2.4",
