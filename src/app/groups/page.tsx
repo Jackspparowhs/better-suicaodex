@@ -9,9 +9,10 @@ interface pageProps {
 
 export function generateMetadata(): Metadata {
   return {
-    title: "Nhóm dịch - SuicaoDex",
-    // description: "Nhóm dịch",
-    // keywords: ["Nhóm dịch", "SuicaoDex"],
+    // CHANGED: Translated title and updated branding
+    title: "Scanlation Groups - Manga by PirateRuler.com",
+    // description: "Scanlation Groups",
+    // keywords: ["Scanlation Groups", "Groups", "Manga by PirateRuler.com"],
   };
 }
 export default async function Page({ searchParams }: pageProps) {
@@ -21,7 +22,8 @@ export default async function Page({ searchParams }: pageProps) {
     <>
       <div>
         <hr className="w-9 h-1 bg-primary border-none" />
-        <h1 className="text-2xl font-black uppercase">Nhóm dịch</h1>
+        {/* CHANGED: Translated 'Nhóm dịch' to 'Scanlation Groups' */}
+        <h1 className="text-2xl font-black uppercase">Scanlation Groups</h1>
       </div>
 
       <div className="mt-4">
