@@ -14,7 +14,8 @@ import { ImageProxyInitializer } from "@/components/image-proxy-initializer";
 
 const inter = Inter({
   preload: true,
-  subsets: ["vietnamese"],
+  // CHANGED: Switched to latin for English support
+  subsets: ["latin"],
 });
 
 // const leagueSpartan = League_Spartan({
@@ -22,13 +23,14 @@ const inter = Inter({
 // });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://suicaodex.com"),
+  metadataBase: new URL(siteConfig.url),
   title: siteConfig.name,
   description: siteConfig.description,
   openGraph: {
     type: "website",
-    url: "https://suicaodex.com/",
-    siteName: "SuicaoDex",
+    url: siteConfig.url,
+    // CHANGED: Uses config name (Manga by PirateRuler.com)
+    siteName: siteConfig.name,
     title: siteConfig.name,
     description: siteConfig.description,
     images: [
@@ -36,7 +38,8 @@ export const metadata: Metadata = {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: "SuicaoDex",
+        // CHANGED: Uses config name
+        alt: siteConfig.name,
       },
     ],
   },
@@ -54,7 +57,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" suppressHydrationWarning>
+    // CHANGED: Set language to English
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
