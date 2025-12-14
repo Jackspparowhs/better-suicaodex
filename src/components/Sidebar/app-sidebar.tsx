@@ -33,66 +33,66 @@ const data = {
 
   navMain: [
     {
-      title: "Theo dõi",
+      title: "Following", // Was: Theo dõi
       url: "#",
       icon: Bookmark,
       isActive: true,
       items: [
         {
-          title: "Thư viện",
+          title: "Library", // Was: Thư viện
           url: "/my-library",
         },
         {
-          title: "Lịch sử đọc",
+          title: "History", // Was: Lịch sử đọc
           url: "/history",
         },
       ],
     },
     {
-      title: "Truyện",
+      title: "Manga", // Was: Truyện
       url: "#",
       icon: BookOpen,
       isActive: true,
       items: [
         {
-          title: "Tìm kiếm nâng cao",
+          title: "Advanced Search", // Was: Tìm kiếm nâng cao
           url: "/advanced-search",
         },
         {
-          title: "Mới cập nhật",
+          title: "Latest Updates", // Was: Mới cập nhật
           url: "/latest",
         },
         {
-          title: "Truyện mới",
+          title: "New Manga", // Was: Truyện mới
           url: "/recent",
         },
         {
-          title: "Thể loại",
+          title: "Tags", // Was: Thể loại
           url: "/tag",
         },
         {
-          title: "Truyện ngẫu nhiên",
+          title: "Random", // Was: Truyện ngẫu nhiên
           url: "/random",
         },
       ],
     },
     {
-      title: "Cộng đồng",
+      title: "Community", // Was: Cộng đồng
       url: "#",
       icon: Users,
       items: [
         {
-          title: "Diễn đàn",
+          title: "Forum", // Was: Diễn đàn
           url: "https://github.com/TNTKien/better-suicaodex/discussions",
         },
         {
-          title: "Nhóm dịch",
+          title: "Groups", // Was: Nhóm dịch
           url: "/groups",
         },
       ],
     },
     {
-      title: "Giải trí",
+      title: "Entertainment", // Was: Giải trí
       url: "#",
       icon: Gamepad2,
       items: [
@@ -101,7 +101,7 @@ const data = {
           url: "/gacha",
         },
         // {
-        //   title: "Nhóm dịch",
+        //   title: "Scanlation Groups",
         //   url: "/groups",
         // },
       ],
