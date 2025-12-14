@@ -37,37 +37,44 @@ export async function generateMetadata({
   }`;
 
   if (status === 404) {
-    return { title: "Truyện không tồn tại" };
+    return { title: "Manga Not Found" }; // CHANGED: Translated error
   } else if (status === 503) {
-    return { title: "Đang bảo trì..." };
+    return { title: "Under Maintenance..." }; // CHANGED: Translated error
   } else if (status !== 200 || !manga) {
-    return { title: "Lỗi mất rồi :(" };
+    return { title: "Error :(" }; // CHANGED: Translated error
   }
 
+  // CHANGED: Translated description and updated branding
   const description =
-    manga.description.content || `Đọc truyện ${manga.title} - SuicaoDex`;
+    manga.description.content || `Read ${manga.title} - Manga by PirateRuler.com`;
 
   return {
-    title: `${manga.title} - SuicaoDex`,
+    // CHANGED: Updated branding
+    title: `${manga.title} - Manga by PirateRuler.com`,
     description,
-    keywords: [`Manga`, manga.title, "SuicaoDex", manga.altTitle || ""],
+    // CHANGED: Updated keywords
+    keywords: [`Manga`, manga.title, "Manga by PirateRuler.com", manga.altTitle || ""],
     openGraph: {
-      title: `${manga.title} - SuicaoDex`,
+      // CHANGED: Updated branding
+      title: `${manga.title} - Manga by PirateRuler.com`,
       url: path,
-      siteName: "SuicaoDex",
+      // CHANGED: Updated branding
+      siteName: "Manga by PirateRuler.com",
       description,
       images: [
         {
           url: `${siteConfig.mangadexAPI.ogURL}/manga/${manga.id}`,
           width: 1200,
           height: 630,
-          alt: "SuicaoDex",
+          // CHANGED: Updated branding
+          alt: "Manga by PirateRuler.com",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${manga.title} - SuicaoDex`,
+      // CHANGED: Updated branding
+      title: `${manga.title} - Manga by PirateRuler.com`,
       description,
       images: [`${siteConfig.mangadexAPI.ogURL}/manga/${manga.id}`],
     },
@@ -98,8 +105,9 @@ export default async function Page({ params }: PageProps) {
 function generateJsonLd(
   manga: Pick<Manga, "id" | "title" | "cover" | "description">
 ) {
+  // CHANGED: Translated description and updated branding
   const description =
-    manga.description.content || `Đọc truyện ${manga.title} - SuicaoDex`;
+    manga.description.content || `Read ${manga.title} - Manga by PirateRuler.com`;
   return {
     "@context": "https://schema.org",
     "@type": "Article",
